@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity(val view: View) : AppCompatActivity(), View.OnClickListener {
 
     var answer:Double = 0.0
 
@@ -26,17 +26,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val item1 :Double = editText1.text.toString().toDouble()
         val item2 :Double = editText2.text.toString().toDouble()
 
-
-            when(v.id){
-                R.id.plus -> answer= item1+item2
-                R.id.minus -> answer= item1-item2
-                R.id.multiple -> answer= item1*item2
-                R.id.divide -> answer= item1/item2
+        try {
+            when (v.id) {
+                R.id.plus -> answer = item1 + item2
+                R.id.minus -> answer = item1 - item2
+                R.id.multiple -> answer = item1 * item2
+                R.id.divide -> answer = item1 / item2
             }
             val intent = Intent(this, CalcAnswer::class.java)
             intent.putExtra("ANSWER", answer)
             startActivity(intent)
-
+        } catch (e:NumberFormatException){
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Action"){
+                            Log.d("UI_PARTS", "Snackbarをタップした")
+                        }.show()
+            }
 
     }
 }
