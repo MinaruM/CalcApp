@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CalcApp</string>
+    <string name="title_activity_calc_answer2">CalcAnswer2</string>
+    <string name="title_activity_result">Result</string>
+</resources>
