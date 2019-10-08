@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.View
+import jp.techacademy.minaru.moriguchi.calcapp.R.id.editText1
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity: AppCompatActivity(), View.OnClickListener {
@@ -23,10 +24,11 @@ class MainActivity: AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v:View){
-        val item1 :Double = editText1.text.toString().toDouble()
-        val item2 :Double = editText2.text.toString().toDouble()
 
         try {
+            val item1 :Double = editText1.text.toString().toDouble()
+            val item2 :Double = editText2.text.toString().toDouble()
+
             when (v.id) {
                 R.id.plus -> answer = item1 + item2
                 R.id.minus -> answer = item1 - item2
@@ -37,11 +39,8 @@ class MainActivity: AppCompatActivity(), View.OnClickListener {
             intent.putExtra("ANSWER", answer)
             startActivity(intent)
         } catch (e:NumberFormatException){
-                Snackbar.make(v, "Replace with your own action1", Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(v, "数値が入力されていません。", Snackbar.LENGTH_INDEFINITE)
                         .show()
-        } finally {
-            Snackbar.make(v, "Replace with your own action2", Snackbar.LENGTH_INDEFINITE)
-                    .show()
         }
 
     }
