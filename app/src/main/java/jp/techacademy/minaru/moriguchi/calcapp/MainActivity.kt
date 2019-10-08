@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity(val view: View) : AppCompatActivity(), View.OnClickListener {
+class MainActivity: AppCompatActivity(), View.OnClickListener {
 
     var answer:Double = 0.0
 
@@ -37,11 +37,12 @@ class MainActivity(val view: View) : AppCompatActivity(), View.OnClickListener {
             intent.putExtra("ANSWER", answer)
             startActivity(intent)
         } catch (e:NumberFormatException){
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Action"){
-                            Log.d("UI_PARTS", "Snackbarをタップした")
-                        }.show()
-            }
+                Snackbar.make(v, "Replace with your own action1", Snackbar.LENGTH_INDEFINITE)
+                        .show()
+        } finally {
+            Snackbar.make(v, "Replace with your own action2", Snackbar.LENGTH_INDEFINITE)
+                    .show()
+        }
 
     }
 }
